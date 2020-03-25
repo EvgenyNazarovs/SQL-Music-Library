@@ -61,6 +61,9 @@ album2 = Album.new({
   found_artist = Artist.find(25)
   albums_by_artists = found_artist.albums
 
+  found_album = Album.find_album_by_id(28)
+  found_album.artist
+
 
   binding.pry
   nil
