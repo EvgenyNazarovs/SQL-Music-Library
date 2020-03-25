@@ -2,6 +2,9 @@ require("pry")
 require_relative("../models/album")
 require_relative("../models/artist")
 
+Album.delete_all
+Artist.delete_all
+
 
 artist1 = Artist.new({
   'name' => 'David Bowie'
@@ -26,7 +29,7 @@ album1 = Album.new({
   'genre' => 'Rock/Electronic',
   'artist_id' => artist1.id
   })
-
+#
 album1.save
 
 album2 = Album.new({
@@ -52,3 +55,9 @@ album2 = Album.new({
     })
 
   album4.save
+
+  albums = Album.find_all
+  artists = Artist.find_all
+
+  binding.pry
+  nil
