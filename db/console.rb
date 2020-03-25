@@ -64,6 +64,8 @@ album2 = Album.new({
   found_album = Album.find_album_by_id(28)
   found_album.artist
 
+  found_artist.edit("D Bowie")
+
 
   binding.pry
   nil
