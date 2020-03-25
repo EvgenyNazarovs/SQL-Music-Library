@@ -27,7 +27,24 @@ class Artist
     sql = "SELECT * FROM artists"
     artists = SqlRunner.run(sql, [])
     return artists.map {|artist_hash| Artist.new(artist_hash)}
-  end 
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM artists
+           WHERE id = $1"
+    values = [id]
+    artists_hash = SqlRunner.run(sql, values).first
+    return nil if artists_hash == nil
+    return Artist.new(artists_hash)
+  end
+
+  def albums
+    sql = "SELECT * FROM albums
+           WHERE artist_id = $1"
+    values = [id]
+    albums = SqlRunner.run(sql, values)
+    return albums.map {|album_hash| Album.new(album_hash)}
+  end
 
 
 end
