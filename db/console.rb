@@ -58,18 +58,23 @@ album2 = Album.new({
 
 
 
-  found_artist = Artist.find_by_id(25)
-  albums_by_artists = found_artist.albums
+  bowie = Artist.find_by_id(25)
+  bowie_albums = bowie.albums
+  p "Second album in our Bowie collection is called '#{bowie_albums[1].title}'."
 
-  found_album = Album.find_album_by_id(28)
-  found_album.artist
+  # gruppa_krovi = Album.find_by_id(29)
+  # gruppa_krovi.artist
 
-  found_artist.name = "BOWIE"
-  found_artist.update_record
+  bowie.name = "D Bowie"
+  bowie.update_record
 
-  found_album.genre = "Synth"
-  found_album.update_record()
+  # gruppa_krovi.genre = "Soviet Rock"
+  # gruppa_krovi.update_record
 
+  # Album.delete_album(gruppa_krovi)
 
-  binding.pry
-  nil
+  new_search = Album.find_by_artist(bowie)
+  p "We have the following albums: #{new_search[0].title}, #{new_search[1].title}"
+
+  # binding.pry
+  # nil
