@@ -31,6 +31,10 @@ class Album
     return albums.map {|album_hash| Album.new(album_hash)}
   end
 
+  def self.find_by_artist
+
+  end
+
   def self.find_album_by_id(id)
     sql = "SELECT * FROM albums
            WHERE id = $1"
@@ -46,6 +50,15 @@ class Album
     values = [artist_id]
     artist_hash = SqlRunner.run(sql, values)[0]
     return Artist.new(artist_hash)
+  end
+
+  def update_record
+    sql = "UPDATE albums
+           SET (title, genre) =
+           ($1, $2)
+           WHERE id = $3"
+    values = [@title, @genre, @id]
+    SqlRunner.run(sql, values)
   end
 
 

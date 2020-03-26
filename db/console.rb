@@ -41,8 +41,8 @@ album2 = Album.new({
   # album2.save
 
   album3 = Album.new({
-    'title' => 'We Must Become Pitiless Censors of Ourselves',
-    'genre' => 'Electronic',
+    'title' => 'Become Pitiless Censors of Ourselves',
+    'genre' => 'Synth',
     'artist_id' => artist2.id
     })
 
@@ -58,13 +58,17 @@ album2 = Album.new({
 
 
 
-  found_artist = Artist.find(25)
+  found_artist = Artist.find_by_id(25)
   albums_by_artists = found_artist.albums
 
   found_album = Album.find_album_by_id(28)
   found_album.artist
 
-  found_artist.edit("D Bowie")
+  found_artist.name = "BOWIE"
+  found_artist.update_record
+
+  found_album.genre = "Synth"
+  found_album.update_record()
 
 
   binding.pry

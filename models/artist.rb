@@ -29,7 +29,7 @@ class Artist
     return artists.map {|artist_hash| Artist.new(artist_hash)}
   end
 
-  def self.find(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM artists
            WHERE id = $1"
     values = [id]
@@ -46,11 +46,11 @@ class Artist
     return albums.map {|album_hash| Album.new(album_hash)}
   end
 
-  def edit(name)
+  def update_record
     sql = "UPDATE artists
            SET name = $1
            WHERE id = $2"
-    values = [name, @id]
+    values = [@name, @id]
     SqlRunner.run(sql, values)
   end
 
